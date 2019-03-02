@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Crystals Collector Game</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
+	<title>Christmas Collector</title>
+	<link rel="stylesheet" type="text/css" href="/assets/css/reset.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="../unit-4-game/assets/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../Christmas-Collector-/assets/css/style.css"/>
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 </head>
@@ -14,39 +15,40 @@
 
 	<div class="header text-center">
 		<h1>CHRISTMAS COLLECTOR</h1>
-		<h3>MAGIC NUMBER:</h3>
-		<h3 id="magicNumber">83</h3>
+		<h3 id="targetNumber">MAGIC NUMBER:</h3>
 	</div>
 	
 	<div class="container">
 		<div class="row">
             <!--Gingerbread Man-->
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-				<img class="itemimg img-responsive" id="item1" src="../unit-4-game/assets/images/ginger.png" alt="Item 1"/>
+				<img class="itemimg img-responsive" id="item1" src="../Christmas-Collector-/assets/images/ginger.png" alt="Item 1"/>
             </div>
             <!--Snowman-->
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-				<img class="itemimg img-responsive" id="item2" src="../unit-4-game/assets/images/snowman.png" alt="Item 2"/>
+				<img class="itemimg img-responsive" id="item2" src="../Christmas-Collector-/assets/images/snowman.png" alt="Item 2"/>
             </div>
             <!--Santa-->
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-				<img class="santaimg img-responsive" id="item3" src="../unit-4-game/assets/images/santa-clip-art-11.png" alt="Item 3"/>
+				<img class="itemimg img-responsive" id="item3" src="../Christmas-Collector-/assets/images/santa-clip-art-11.png" alt="Item 3"/>
             </div>
-            <!--Tree-->
+            <!--Candy Cane-->
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
-				<img class="itemimg img-responsive" id="item4" src="../unit-4-game/assets/images/tree.png" alt="Item 4"/>
+				<img class="itemimg img-responsive" id="item4" src="../Christmas-Collector-/assets/images/Elf-PNG-Image.png" alt="Item 4"/>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-lg-12 directions">
-				<p>Each item has a hidden value that will only be revealed when clicked. With each click, you will add the item's value to your total score. You will win the game if your total score matches the magic number, and you will lose if your total score exceeds it. Good luck.</p>
+				<p>Each character has a hidden value that will only be revealed when clicked. With each click, you will add the characters value to your total score. You will win the game if your total score matches the magic number, and you will lose if your total score exceeds it. Good luck.</p>
 			</div>
 		</div>
 
 		<div class="row text-center">
 			<div class="col-lg-4 total">
-				<h3>TOTAL SCORE:</h3>
+				<h3>TOTAL SCORE:
+                    <span id="curScore">
+                <h3>
 				<h3 id="totalScore"></h3>
 			</div>
 			<div class="col-lg-4 button">
@@ -54,11 +56,116 @@
 				<button type="button" class="btn btn-light btn-lg">PLAY AGAIN</button>
 			</div>
 			<div class="col-lg-4 scores">
-				<p class="score">WINS: <span id="wins"></span></p> 
-				<p class="score">LOSSES: <span id="losses"></span></p>
+				<p class="score">WINS: <span id="winCounter"></span></p> 
+				<p class="score">LOSSES: <span id="lossCounter"></span></p>
 			</div>
 		</div>
-	</div>
-	
+    </div>
+    
+  <!-- JAVASCRIPT  -->
+  <!-- ========================================= -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+var winCounter = 0;
+var lossCounter = 0;
+var targetNumber = Math.floor(Math.random() * 101) + 19;
+$("#targetNumber").text(targetNumber);
+
+var item1 = Math.floor(Math.random() * 11) + 1;
+var item2 = Math.floor(Math.random() * 11) + 1;
+var item3 = Math.floor(Math.random() * 11) + 1;
+var item4 = Math.floor(Math.random() * 11) + 1;
+
+
+$("#winCounter").html(winCounter);
+$("#lossCounter").html(lossCounter);
+
+var counter = 0;
+$("#curScore").text(counter);
+
+function restartGame() {
+
+targetNumber = Math.floor(Math.random() * 101) + 19;
+$("#targetNumber").text(targetNumber);
+item1 = Math.floor(Math.random() * 11) + 1;
+item2 = Math.floor(Math.random() * 11) + 1;
+item3 = Math.floor(Math.random() * 11) + 1;
+item4 = Math.floor(Math.random() * 11) + 1;
+counter = 0;
+$("#curScore").text(counter);
+
+}
+
+function win() {
+  alert("You won!")
+	winCounter ++;
+	$("#winCounter").text(winCounter);
+	restartGame();
+}
+
+function lose() {
+  alert("You lost!")
+	lossCounter ++;
+	$("#lossCounter").text(lossCounter);
+	restartGame();
+}
+
+$('#item1').on ('click', function(){
+    counter = counter + item1;
+    
+    $('#curScore').text(counter); 
+          
+        if (counter == targetNumber){
+          win();
+        }
+        else if (counter > targetNumber){
+          lose();
+        }   
+  });  
+
+$('#item2').on ('click', function(){
+    counter = counter + item2;
+    
+    $('#curScore').text(counter); 
+         
+        if (counter == targetNumber){
+          win();
+        }
+        else if (counter > targetNumber){
+          lose();
+        }   
+  });  
+
+$('#item3').on ('click', function(){
+    counter = counter + item3;
+    
+    $('#curScore').text(counter); 
+          
+        if (counter == targetNumber){
+          win();
+        }
+        else if (counter > targetNumber){
+          lose();
+        }   
+  });  
+
+$('#item4').on ('click', function(){
+    counter = counter + item4;
+    
+    $('#curScore').text(counter); 
+         
+        if (counter == targetNumber){
+          win();
+        }
+        else if (counter > targetNumber){
+          lose();
+        }   
+
+  });  
+
+
+</script>
 </body>
 </html>
