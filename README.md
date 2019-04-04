@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Christmas Collector 
  
 # How It Works
@@ -16,6 +16,5 @@
 
 ## Technologies Used: 
 #### HTML, CSS, jQuery
-=======
-
->>>>>>> 5f5c2b90d016dc2760daa09dd1b1c25a591e1057
+ 
+![](readme)
