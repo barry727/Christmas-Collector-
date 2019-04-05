@@ -17,7 +17,7 @@
 ## Technologies Used: 
 #### HTML, CSS, jQuery
  
-![](readme)
+<img src="./assets/images/readme.png">
 
 
 
