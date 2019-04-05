@@ -1,7 +1,8 @@
+https://barry727.github.io/Christmas-Collector-/
 
 # Christmas Collector 
  
-# How It Works
+## How It Works
 
 * There are four characters displayed as buttons on the page.
 * The player will be shown a random number at the start of the game.
